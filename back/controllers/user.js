@@ -1,6 +1,7 @@
 const User = require('../models/user'); // Chemin des models utilisateur
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 // Création d'un nouvelle utilisateur 
 exports.signUp = (req, res) => {
@@ -34,7 +35,7 @@ exports.login = (req, res) => {
                     userId: user._id,
                     token: jwt.sign(
                         {userId: user._id},
-                        'RANDOM_TOKEN_SECRET',
+                        process.env.ACCESS_SECRET_TOKEN,
                         {expiresIn: '24h'}
                     ) 
                 });

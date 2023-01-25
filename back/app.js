@@ -10,7 +10,9 @@ const userRoutes = require('./routes/user');
 
 const app = express();
 
-app.use(helmet()); // Permet de protéger de certaines vulnérabilités connues du Web en configurant de manière appropriée les en-têtes HTTP.
+app.use(helmet({
+  crossOriginResourcePolicy: false,
+})); // Permet de protéger de certaines vulnérabilités connues du Web en configurant de manière appropriée les en-têtes HTTP.
 
 
 // //Middleware
